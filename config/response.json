@@ -1,0 +1,27 @@
+{
+    "login":{
+        "status":"Logged in Successfully",
+        "code":1000,
+        "description":"Login was succesfull "
+    },
+    "signout":{
+        "status":"Signout Successfull",
+        "code":1001,
+        "description":"Sign out was succesfull and need login credentials to relogin"
+    },
+    "notSignedIn":{
+        "status":"User Not Signed In",
+        "code":1002,
+        "description":"Please Sign in to access the Page"
+    },
+    "accessPageVioaltion":{
+        "status":"Not Privileged",
+        "code":1003,
+        "description":"You are not priviliged to access the page."
+    },
+    "accessApiVioaltion":{
+        "status":"Not Privileged",
+        "code":1003,
+        "description":"You are not priviliged to perform this operation."
+    }
+}
