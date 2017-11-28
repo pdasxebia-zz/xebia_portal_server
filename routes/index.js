@@ -21,6 +21,7 @@ router.get('/', function (req, res,panna) {
 
 router.post('/login', function (req, res, next) {
   //console.log(req);
+  console.log(typeof req.body);
   //sess=req.app.locals.session;
   req.session.data=sessiondb;
   
@@ -30,11 +31,20 @@ router.post('/login', function (req, res, next) {
   }else{
 
   var check;
-  
+
+  let user="";
+  let pass="";
+  if( Object.keys(req.body).length === 0){
+    user= req.headers.username;
+    pass= req.headers.password;
+  }else{
+    user= req.body.username;
+    pass= req.body.password;
+  }
   Admins.find({
     where: {
-      username: req.headers.username,
-      password: req.headers.password,
+      username: user,
+      password: pass,
     }
   }).then(
     admins => {
@@ -49,6 +59,7 @@ router.post('/login', function (req, res, next) {
           sess.user.name=admins.get('firstname');
           sess.user.profile=admins.get('profile');
           sess.user.email=admins.get('email');
+          resp.login.authToken=req.sessionID;
           res.send(resp.login);
           
         } else {
