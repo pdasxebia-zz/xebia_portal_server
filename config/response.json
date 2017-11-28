@@ -21,7 +21,12 @@
     },
     "accessApiVioaltion":{
         "status":"Not Privileged",
-        "code":1003,
+        "code":1004,
         "description":"You are not priviliged to perform this operation."
+    },
+    "userCredentialsWrong":{
+        "status":"User credentials mismatch",
+        "code":1005,
+        "description":"Either Username or Password is incorrect."
     }
 }

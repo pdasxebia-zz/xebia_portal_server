@@ -19,7 +19,7 @@ router.get('/', function (req, res,panna) {
   //res.render('index', { title: 'Express' });
 });
 
-router.get('/login', function (req, res, next) {
+router.post('/login', function (req, res, next) {
   //console.log(req);
   //sess=req.app.locals.session;
   req.session.data=sessiondb;
@@ -30,15 +30,16 @@ router.get('/login', function (req, res, next) {
   }else{
 
   var check;
+  
   Admins.find({
     where: {
-      username: req.param("username"),
-      password: req.param("password"),
+      username: req.headers.username,
+      password: req.headers.password,
     }
   }).then(
     admins => {
-      
-      if(admins){
+      console.log(admins);
+      if(admins!=null){
         check = admins.get('username');
         console.log(check);
         if (admins.get('username')) {
@@ -53,6 +54,8 @@ router.get('/login', function (req, res, next) {
         } else {
           res.send("failed");
         }
+      }else {
+        res.send(resp.userCredentialsWrong);
       }
      
     }
