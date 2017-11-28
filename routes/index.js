@@ -3,6 +3,7 @@ var router = express.Router();
 var Admins = require("../models/AdminSchema");
 var resp = require("../config/response.json");
 var sessiondb = require("../config/sessiondb");
+
 /* GET home page. */
 router.get('/', function (req, res,panna) {
   //sess=req.app.locals.session;
