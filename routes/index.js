@@ -64,9 +64,10 @@ router.post('/login', function (req, res, next) {
           res.send(resp.login);
           
         } else {
-          res.send("failed");
+          res.send(resp.userCredentialsWrong);
         }
       }else {
+        res.statusCode=401;
         res.send(resp.userCredentialsWrong);
       }
      
