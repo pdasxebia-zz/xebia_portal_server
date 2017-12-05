@@ -14,7 +14,26 @@ module.exports = function(app, passport,Employee) {
 		
 	});
 
-	
+	app.get('/employee/:id', function(req, res) {
+		if (req.isAuthenticated()){
+			Employee.findAll({where:{id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
+		}else{
+			res.statusCode=401;
+			res.send(resp.accessApiVioaltion);
+		}
+		
+	});
+
+	app.post('/create/employee/', function(req, res) {
+		data=req.body;
+		if (req.isAuthenticated()){
+			Employee.findAll({where:{id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
+		}else{
+			res.statusCode=401;
+			res.send(resp.accessApiVioaltion);
+		}
+		
+	});
 	
 };
 

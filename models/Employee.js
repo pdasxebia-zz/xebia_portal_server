@@ -25,6 +25,22 @@ const Employee = sequelize.define('employee', {
             notEmpty:true,
         }
       },
+      email: {
+        type: Sequelize.STRING,
+        unique:'compositeIndex',
+        allowNull: false,
+        validate:{
+            notEmpty:true,
+        }
+      },
+      phone: {
+        type: Sequelize.STRING,
+        unique:'compositeIndex',
+        allowNull: false,
+        validate:{
+            notEmpty:true,
+        }
+      },
       emp_type: {
         type: Sequelize.STRING,
         unique:'compositeIndex',
@@ -33,6 +49,12 @@ const Employee = sequelize.define('employee', {
             notEmpty:true,
             isEmail:true,
         }
+      },
+
+      status: {
+        type: Sequelize.ENUM,
+        allowNull: false,
+        values: [ 'soft_blocked', 'resigned','long_leave','deployable','staffed','exited'],
       },
       
     doj: {

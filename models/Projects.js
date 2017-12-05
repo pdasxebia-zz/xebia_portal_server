@@ -34,7 +34,7 @@ const Projects = sequelize.define('projects', {
   
   //Projects.belongsTo(Locations, {foreignKey: 'location_id'});
   //Projects.belongsTo(Accounts, {foreignKey: 'account_id'});
-  //Projects.sync();
+  //Projects.sync({force: true});
   
   
  

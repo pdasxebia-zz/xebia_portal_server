@@ -25,7 +25,7 @@ const Locations = sequelize.define('location', {
       },
      
   });
-  //Locations.belongsTo(Employee, {foreignKey: 'emp_id'});
+  
   //Locations.sync({force: true});
   // force: true will drop the table if it already exists
    /* Locations.sync({force: true}).then(() => {

@@ -9,8 +9,9 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var app      = express();
 var port     = process.env.PORT || 8080;
-var Employee=require("./models/Employee")
 var EmpSalary=require("./models/EmpSalary")
+var Employee=require("./models/Employee")
+
 var Accounts=require("./models/Accounts")
 var Locations=require("./models/Location")
 var Project=require("./models/Projects")

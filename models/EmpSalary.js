@@ -38,8 +38,8 @@ const EmpSalary = sequelize.define('emp_salary', {
 
 
   });
-  //EmpSalary.belongsTo(Employee, {foreignKey: 'emp_id'});
-  //EmpSalary.sync({force: true});
+ // EmpSalary.belongsTo(Employee, {foreignKey: 'emp_id'});
+ // EmpSalary.sync({force: true});
   // force: true will drop the table if it already exists
    /* EmpSalary.sync({force: true}).then(() => {
     // Table created

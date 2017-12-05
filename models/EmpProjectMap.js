@@ -42,7 +42,7 @@ const EmpProjectMap = sequelize.define('EmpProjectMap', {
 
   //EmpProjectMap.belongsTo(Employee, {foreignKey: 'emp_id'});
   //EmpProjectMap.belongsTo(Projects, {foreignKey: 'project_id'});
- //EmpProjectMap.sync({force: true});
+  //EmpProjectMap.sync({force: true});
   // force: true will drop the table if it already exists
    /* EmpProjectMap.sync({force: true}).then(() => {
     // Table created

@@ -32,7 +32,7 @@ const ProjectMonthDetails = sequelize.define('ProjectMonthDetails', {
   });
   
   //ProjectMonthDetails.belongsTo(EmpProjectMap, {foreignKey: 'emp_project_id'});
-  //ProjectMonthDetails.sync();
+  //ProjectMonthDetails.sync({force: true});
   // force: true will drop the table if it already exists
    /* ProjectMonthDetails.sync({force: true}).then(() => {
     // Table created
