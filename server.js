@@ -11,7 +11,7 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var EmpSalary=require("./models/EmpSalary")
 var Employee=require("./models/Employee")
-
+var cors=require('cors');
 var Accounts=require("./models/Accounts")
 var Locations=require("./models/Location")
 var Project=require("./models/Projects")
@@ -28,6 +28,7 @@ require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
+app.use(cors());
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({
 	extended: true

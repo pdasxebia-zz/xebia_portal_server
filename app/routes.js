@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
 	// =====================================
 	// show the login form
 	app.get('/login', function(req, res) {
-		res.statusCode="400";
+		res.status(400);;
 		// render the page and pass in any flash data if it exists
 		res.send(resp.userCredentialsWrong);
 	});
