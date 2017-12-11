@@ -5,7 +5,7 @@ module.exports = function(app, passport,Employee) {
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/employeelist', function(req, res) {
-		if (req.isAuthenticated()){
+		if (req.isAuthenticated() || req.body.authToken==req.sessionID){
 			Employee.findAll({raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
 		}else{
 			res.statusCode=401;
@@ -15,7 +15,7 @@ module.exports = function(app, passport,Employee) {
 	});
 
 	app.get('/employee/:id', function(req, res) {
-		if (req.isAuthenticated()){
+		if (req.isAuthenticated() || req.body.authToken==req.sessionID){
 			Employee.findAll({where:{id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
 		}else{
 			res.statusCode=401;
@@ -26,7 +26,7 @@ module.exports = function(app, passport,Employee) {
 
 	app.post('/create/employee/', function(req, res) {
 		
-		if (req.isAuthenticated()){
+		if (req.isAuthenticated() || req.body.authToken==req.sessionID){
 			err=resp.dataIncomplete;
 			req.statusCode=400;
 			data=req.body;
