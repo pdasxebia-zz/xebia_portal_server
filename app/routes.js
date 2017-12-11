@@ -20,8 +20,8 @@ module.exports = function(app, passport) {
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
-		successFlash : 'loggedIn', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
+			successFlash : 'loggedIn', // redirect to the secure profile section
+            failureRedirect : 'login failed', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
         function(req, res) {
@@ -31,7 +31,8 @@ module.exports = function(app, passport) {
               req.session.cookie.maxAge = 1000 * 60 * 3;
             } else {
               req.session.cookie.expires = false;
-            }
+			}
+			resp.login.authToken=sessionID ;
 			res.send(resp.login);
     });
 
