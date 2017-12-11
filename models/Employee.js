@@ -31,6 +31,7 @@ const Employee = sequelize.define('employee', {
         allowNull: false,
         validate:{
             notEmpty:true,
+            isEmail:true
         }
       },
       phone: {
@@ -47,7 +48,17 @@ const Employee = sequelize.define('employee', {
         allowNull: false,
         validate:{
             notEmpty:true,
-            isEmail:true,
+           
+        }
+      },
+
+      emp_id: {
+        type: Sequelize.STRING,
+        unique:'compositeIndex',
+        allowNull: false,
+        validate:{
+            notEmpty:true,
+           
         }
       },
 

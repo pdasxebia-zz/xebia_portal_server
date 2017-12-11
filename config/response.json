@@ -28,5 +28,21 @@
         "status":"User credentials mismatch",
         "code":1005,
         "description":"Either Username or Password is incorrect."
+    },
+    "dataIncomplete":{
+        "status":"Data InComplete",
+        "code":1006,
+        "description":""
+    },
+    
+    "insuficientData":{
+        "status":"Data Insufficeint",
+        "code":1007,
+        "description":"Api call was sent without complete data"
+    },
+    "dataInserted":{
+        "status":"Data Inserted",
+        "code":1008,
+        "description":"Data Inserted to database"
     }
 }

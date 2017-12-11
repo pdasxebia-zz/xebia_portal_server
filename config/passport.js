@@ -21,14 +21,14 @@ module.exports = function(passport) {
     // passport needs ability to serialize and unserialize users out of session
 
     // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
+    passport.serializeUser(function(Admins, done) {
+        done(null, Admins.id);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
-            done(err, rows[0]);
+        connection.query("SELECT * FROM Admins WHERE id = ? ",[id], function(err, rows){
+            done(err, rows);
         });
     });
 
