@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
 	// =====================================
 	// show the login form
 	app.get('/login', function(req, res) {
-		res.status(400);;
+		res.status(400);
 		// render the page and pass in any flash data if it exists
 		res.send(resp.userCredentialsWrong);
 	});
@@ -32,7 +32,7 @@ module.exports = function(app, passport) {
             } else {
               req.session.cookie.expires = false;
 			}
-			resp.login.authToken=sessionID ;
+			resp.login.authToken=req.sessionID ;
 			res.send(resp.login);
     });
 

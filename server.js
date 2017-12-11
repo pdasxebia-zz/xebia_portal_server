@@ -40,6 +40,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 // required for passport
 app.use(session({
 	secret: 'vidyapathaisalwaysrunning',
+	cookie: { httpOnly: false },
 	resave: true,
 	saveUninitialized: true
  } )); // session secret
