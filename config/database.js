@@ -2,8 +2,8 @@
 module.exports = {
     'connection': {
         'host': 'localhost',
-        'user': 'mckinseydb',
-        'password': 'mckinsey'
+        'user': 'root',
+        'password': ''
     },
 	'database': 'xebia_portal',
     'users_table': 'admins'
