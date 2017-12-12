@@ -25,8 +25,9 @@ module.exports = function(app, passport,Employee) {
 	});
 
 	app.post('/create/employee/', function(req, res) {
-		
-		if (req.isAuthenticated() || req.body.authToken==req.sessionID){
+		console.log(req.headers.authtoken);
+		console.log(req.sessionID);
+		if (  req.isAuthenticated()){
 			err=resp.dataIncomplete;
 			req.statusCode=400;
 			data=req.body;

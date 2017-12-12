@@ -24,12 +24,12 @@ var flash    = require('connect-flash');
 // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
-
+var FileStore = require('session-file-store')(session);
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cors());
-app.use(cookieParser()); // read cookies (needed for auth)
+app.use(cookieParser("well I am james bond ;)")); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -38,12 +38,12 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
-app.use(session({
-	secret: 'vidyapathaisalwaysrunning',
-	cookie: { httpOnly: false },
-	resave: true,
-	saveUninitialized: true
- } )); // session secret
+app.use(session({ secret: 'keyboard cat',
+resave: false,
+store: new FileStore,
+saveUninitialized: false ,
+cookie: { maxAge: 3600000,secure: false, httpOnly: true }
+} )); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session

@@ -26,19 +26,20 @@ module.exports = function(app, passport) {
 		}),
         function(req, res) {
            
-
+			
             if (req.body.remember) {
               req.session.cookie.maxAge = 1000 * 60 * 3;
             } else {
               req.session.cookie.expires = false;
 			}
-			resp.login.authToken=req.sessionID ;
+		
+			resp.login.authToken=req.sessionID;
 			res.send(resp.login);
     });
 
 	
 	app.get('/profile', isLoggedIn, function(req, res) {
-		res.send(resp.login);
+		res.send(req.session.user);
 	});
 
 
