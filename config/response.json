@@ -44,5 +44,10 @@
         "status":"Data Inserted",
         "code":1008,
         "description":"Data Inserted to database"
+    },
+    "dataAlreadyExists":{
+        "status":"Data Already Exists",
+        "code":1009,
+        "description":"Data Already Exists in database"
     }
 }

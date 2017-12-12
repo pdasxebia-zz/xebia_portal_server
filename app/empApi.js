@@ -56,14 +56,21 @@ module.exports = function(app, passport,Employee) {
 				err.description="Please enter a valid Phone number of employee.";
 				res.send(err);
 			}
-			data.status="deployable";
+			if(!("status" in data )){
+				data.status="deployable";
+			}
+			
 			Employee.sync().then(() => {
 				// Table created
-				return Employee.create(data);
+				return Employee.create(data).then(()=>{
+					res.statusCode=200;
+					res.send(resp.dataInserted);
+				}).catch(function (err) {
+					res.send(resp.dataAlreadyExists);
+				  });
 			  });
 			//Employee.create(data).then();
-			res.statusCode=200;
-			res.send(resp.dataInserted);
+			
 		}else{
 			res.statusCode=401;
 			res.send(resp.accessApiVioaltion);
