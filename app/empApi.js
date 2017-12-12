@@ -30,7 +30,7 @@ module.exports = function(app, passport,Employee) {
 		res.header('Access-Control-Allow-Credentials', true);
 		if (  req.isAuthenticated()){
 			err=resp.dataIncomplete;
-			req.statusCode=400;
+			res.statusCode=400;
 			data=req.body;
 			console.log(data.name.length);
 			if(Object.keys(data).length === 0 && data.constructor === Object){
@@ -62,6 +62,7 @@ module.exports = function(app, passport,Employee) {
 				return Employee.create(data);
 			  });
 			//Employee.create(data).then();
+			res.statusCode=200;
 			res.send(resp.dataInserted);
 		}else{
 			res.statusCode=401;
