@@ -28,7 +28,7 @@ var FileStore = require('session-file-store')(session);
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 app.use(cookieParser("well I am james bond ;)")); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({
 	extended: true
@@ -40,7 +40,6 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 // required for passport
 app.use(session({ secret: 'keyboard cat',
 resave: false,
-store: new FileStore,
 saveUninitialized: false ,
 cookie: { maxAge: 3600000,secure: false, httpOnly: true }
 } )); // session secret

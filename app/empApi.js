@@ -25,8 +25,9 @@ module.exports = function(app, passport,Employee) {
 	});
 
 	app.post('/create/employee/', function(req, res) {
-		console.log(req.headers.authtoken);
-		console.log(req.sessionID);
+		//console.log(req.headers.authtoken);
+		//console.log(req.sessionID);
+		res.header('Access-Control-Allow-Credentials', true);
 		if (  req.isAuthenticated()){
 			err=resp.dataIncomplete;
 			req.statusCode=400;
