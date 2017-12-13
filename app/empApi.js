@@ -16,7 +16,7 @@ module.exports = function(app, passport,Employee) {
 
 	app.get('/employee/:id', function(req, res) {
 		if (req.isAuthenticated() || req.body.authToken==req.sessionID){
-			Employee.findAll({where:{emp_id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
+			Employee.findOne({where:{emp_id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
 		}else{
 			res.statusCode=401;
 			res.send(resp.accessApiVioaltion);
