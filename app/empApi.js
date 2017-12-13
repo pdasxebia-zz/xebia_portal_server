@@ -16,7 +16,7 @@ module.exports = function(app, passport,Employee) {
 
 	app.get('/employee/:id', function(req, res) {
 		if (req.isAuthenticated() || req.body.authToken==req.sessionID){
-			Employee.findAll({where:{id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
+			Employee.findAll({where:{emp_id:req.params.id},raw: true}).then((emp)=>res.send(emp)); // load the index.ejs file
 		}else{
 			res.statusCode=401;
 			res.send(resp.accessApiVioaltion);
@@ -53,11 +53,11 @@ module.exports = function(app, passport,Employee) {
 				err.description="Please enter a valid Phone number of employee.";
 				res.send(err);
 			}
-			Employee.findOne({where:{id:req.params.id},raw: true}).then((emp)=>{
+			Employee.findOne({where:{emp_id:req.params.id},raw: true}).then((emp)=>{
 				console.log(data)
 				Employee.update(data,
 					{where:
-						{id:req.params.id}
+						{emp_id:req.params.id}
 					}
 				).then(()=>{
 					res.statusCode=200;
