@@ -49,5 +49,15 @@
         "status":"Data Already Exists",
         "code":1009,
         "description":"Data Already Exists in database"
+    },
+    "phantomError":{
+        "status":"Record doesn't Exists",
+        "code":1010,
+        "description":"Record doesn't Exists in database"
+    },
+    "dataUpdated":{
+        "status":"Data updated",
+        "code":1011,
+        "description":"Data updated in  database"
     }
 }
