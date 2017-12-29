@@ -71,6 +71,38 @@ module.exports = function(app, passport,Employee) {
 		
 	});
 
+
+
+	app.put('/skillset/:id', function(req, res) {
+		res.header('Access-Control-Allow-Credentials', true);
+		if (req.isAuthenticated() ){
+			err=resp.dataIncomplete;
+			res.statusCode=400;
+			data=req.body;
+			if(SkillValidator(data.skillset)){
+				res.send(resp.badFormat);
+			}
+			
+			Employee.findOne({where:{emp_id:req.params.id},raw: true}).then((emp)=>{
+				console.log(data)
+				Employee.update(data,
+					{where:
+						{emp_id:req.params.id}
+					}
+				).then(()=>{
+					res.statusCode=200;
+					res.send(resp.dataInserted);
+				});
+			}).catch(resp.phantomError); // load the index.ejs file
+		 }else{
+			res.statusCode=401;
+			res.send(resp.accessApiVioaltion);
+		} 
+		
+	});
+
+
+
 	app.post('/create/employee/', function(req, res) {
 		//console.log(req.headers.authtoken);
 		//console.log(req.sessionID);
@@ -138,4 +170,17 @@ function isLoggedIn(req, res, next) {
 	res.redirect('/');
 }
 
-
+function SkillValidator(obj){
+	flag=true;
+	obj.forEach(element => {
+		if(Object.keys(element).length!=3)
+		flag=false;	
+		if(!element.skill)
+		flag=false;
+		if(!element.level)
+		flag=false;
+		if(!element.version)
+		flag=false;
+	});
+	return flag;
+}

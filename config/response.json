@@ -59,5 +59,10 @@
         "status":"Data updated",
         "code":1011,
         "description":"Data updated in  database"
+    },
+    "badFormat":{
+        "status":"Data in bad Format",
+        "code":1012,
+        "description":"Data is corrupted or in bad format"
     }
 }

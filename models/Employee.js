@@ -83,9 +83,15 @@ const Employee = sequelize.define('employee', {
         },
         role: {
             type: Sequelize.INTEGER
-          }
-        
+          },
 
+          manager: {
+            type: Sequelize.STRING
+          },
+        
+          skillset: {
+            type: Sequelize.JSON
+          }
 
   });
   //Employee.sync({force: true});

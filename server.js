@@ -11,6 +11,7 @@ var app      = express();
 var port     = process.env.PORT || 8080;
 var EmpSalary=require("./models/EmpSalary")
 var Employee=require("./models/Employee")
+var Address=require("./models/addressSchema")
 var cors=require('cors');
 var Accounts=require("./models/Accounts")
 var Locations=require("./models/Location")
