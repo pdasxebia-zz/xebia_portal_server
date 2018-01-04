@@ -37,7 +37,14 @@ const EmpProjectMap = sequelize.define('EmpProjectMap', {
         type: Sequelize.DATE
         
       },
-    
+      emp_id: {
+        type: Sequelize.INTEGER
+        
+      },
+      project_id: {
+        type: Sequelize.INTEGER
+        
+      }
   });
 
   //EmpProjectMap.belongsTo(Employee, {foreignKey: 'emp_id'});

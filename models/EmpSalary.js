@@ -32,8 +32,10 @@ const EmpSalary = sequelize.define('emp_salary', {
       type: Sequelize.DATE
       
     },
-   
-     
+    emp_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    }
         
 
 

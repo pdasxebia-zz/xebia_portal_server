@@ -43,10 +43,14 @@ const Address = sequelize.define('address', {
       pincode: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      emp_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       }
     
   });
-
+ 
   //Address.belongsTo(Employee, {foreignKey: 'emp_id'});
   //Address.sync({force: true});
   //Address.belongsTo(Projects, {foreignKey: 'project_id'});

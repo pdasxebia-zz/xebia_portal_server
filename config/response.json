@@ -32,7 +32,7 @@
     "dataIncomplete":{
         "status":"Data InComplete",
         "code":1006,
-        "description":""
+        "description":"please check the number of input fields."
     },
     
     "insuficientData":{

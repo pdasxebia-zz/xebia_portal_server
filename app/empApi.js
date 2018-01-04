@@ -107,54 +107,60 @@ module.exports = function(app, passport,Employee) {
 		//console.log(req.headers.authtoken);
 		//console.log(req.sessionID);
 		res.header('Access-Control-Allow-Credentials', true);
+		var msg;
 		if (  req.isAuthenticated()){
-			err=resp.dataIncomplete;
+			msg=resp.dataIncomplete;
 			res.statusCode=400;
 			data=req.body;
-			console.log(data.name.length);
+			
 			if(Object.keys(data).length === 0 && data.constructor === Object){
-				res.send(resp.insuficientData);
+				msg=resp.insuficientData;
+				
 			}
 			if(!("name" in data )||data.name.length<3|| !(/^[a-z A-Z]*$/i.test(data.name))){
-				err.description="Please enter a valid name.";
-				res.send(err);
+				msg.description="Please enter a valid name.";
+				
 			}
 			if(!("emp_id" in data ) || data.emp_id.length<3|| !(/\w+/g.test(data.emp_id))){
-				err.description="Please enter a valid ID for employee.";
-				res.send(err);
+				msg.description="Please enter a valid ID for employee.";
 			}
 			if(!("emp_type" in data ) ||data.emp_type.length<3|| !(/^[a-z A-Z]*$/i.test(data.emp_type))){
-				err.description="Please enter a valid Type of employee.";
-				res.send(err);
+				msg.description="Please enter a valid Type of employee.";
+				
 			}
 			if(!("phone" in data ) ||data.phone.length<3){
-				err.description="Please enter a valid Phone number of employee.";
-				res.send(err);
+				msg.description="Please enter a valid Phone number of employee.";
+				
 			}
 			if(!("email" in data ) ||data.email.length<3|| !(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.email))){
-				err.description="Please enter a valid Phone number of employee.";
-				res.send(err);
+				msg.description="Please enter a valid Phone number of employee.";
 			}
 			if(!("status" in data )){
 				data.status="deployable";
 			}
 			
-			Employee.sync().then(() => {
-				// Table created
-				return Employee.create(data).then(()=>{
-					res.statusCode=200;
-					res.send(resp.dataInserted);
+			 Employee.create(data).then((sqlMsg)=>{
+				 console.log(sqlMsg);
+					 msg=resp.dataInserted;
+					 res.send(msg);
 				}).catch(function (err) {
-					res.send(resp.dataAlreadyExists);
+					msg=resp.dataAlreadyExists;
+					msg.description=err.original.sqlMessage;
+					res.send(msg);
 				  });
-			  });
+			 
 			//Employee.create(data).then();
 			
 		}else{
-			res.statusCode=401;
-			res.send(resp.accessApiVioaltion);
+			//res.statusCode=401;
+			msg=resp.accessApiVioaltion;
+			res.send(msg);
+			//res.end();
 		}
-		
+		if(msg.code!="1008"  ){
+			res.statusCode=401;
+		}
+		//res.send(msg);
 	});
 	
 };

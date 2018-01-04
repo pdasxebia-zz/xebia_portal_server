@@ -28,6 +28,15 @@ const Projects = sequelize.define('projects', {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      location_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      account_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+
       
  
   });
