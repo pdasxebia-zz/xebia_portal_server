@@ -1,68 +1,67 @@
 {
-    "login":{
-        "status":"Logged in Successfully",
-        "code":1000,
-        "description":"Login was succesfull "
+    "login": {
+        "status": "Logged in Successfully",
+        "code": 1000,
+        "description": "Login was succesfull "
     },
-    "signout":{
-        "status":"Signout Successfull",
-        "code":1001,
-        "description":"Sign out was succesfull and need login credentials to relogin"
+    "signout": {
+        "status": "Signout Successfull",
+        "code": 1001,
+        "description": "Sign out was succesfull and need login credentials to relogin"
     },
-    "notSignedIn":{
-        "status":"User Not Signed In",
-        "code":1002,
-        "description":"Please Sign in to access the Page"
+    "notSignedIn": {
+        "status": "User Not Signed In",
+        "code": 1002,
+        "description": "Please Sign in to access the Page"
     },
-    "accessPageVioaltion":{
-        "status":"Not Privileged",
-        "code":1003,
-        "description":"You are not priviliged to access the page."
+    "accessPageVioaltion": {
+        "status": "Not Privileged",
+        "code": 1003,
+        "description": "You are not priviliged to access the page."
     },
-    "accessApiVioaltion":{
-        "status":"Not Privileged",
-        "code":1004,
-        "description":"You are not priviliged to perform this operation."
+    "accessApiVioaltion": {
+        "status": "Not Privileged",
+        "code": 1004,
+        "description": "You are not priviliged to perform this operation."
     },
-    "userCredentialsWrong":{
-        "status":"User credentials mismatch",
-        "code":1005,
-        "description":"Either Username or Password is incorrect."
+    "userCredentialsWrong": {
+        "status": "User credentials mismatch",
+        "code": 1005,
+        "description": "Either Username or Password is incorrect."
     },
-    "dataIncomplete":{
-        "status":"Data InComplete",
-        "code":1006,
-        "description":"please check the number of input fields."
+    "dataIncomplete": {
+        "status": "Data InComplete",
+        "code": 1006,
+        "description": "please check the number of input fields."
     },
-    
-    "insuficientData":{
-        "status":"Data Insufficeint",
-        "code":1007,
-        "description":"Api call was sent without complete data"
+    "insuficientData": {
+        "status": "Data Insufficeint",
+        "code": 1007,
+        "description": "Api call was sent without complete data"
     },
-    "dataInserted":{
-        "status":"Data Inserted",
-        "code":1008,
-        "description":"Data Inserted to database"
+    "dataInserted": {
+        "status": "Data Inserted",
+        "code": 1008,
+        "description": "Data Inserted to database"
     },
-    "dataAlreadyExists":{
-        "status":"Data Already Exists",
-        "code":1009,
-        "description":"Data Already Exists in database"
+    "dataAlreadyExists": {
+        "status": "Data Already Exists",
+        "code": 1009,
+        "description": "Data Already Exists in database"
     },
-    "phantomError":{
-        "status":"Record doesn't Exists",
-        "code":1010,
-        "description":"Record doesn't Exists in database"
+    "phantomError": {
+        "status": "Record doesn't Exists",
+        "code": 1010,
+        "description": "Record doesn't Exists in database"
     },
-    "dataUpdated":{
-        "status":"Data updated",
-        "code":1011,
-        "description":"Data updated in  database"
+    "dataUpdated": {
+        "status": "Data updated",
+        "code": 1011,
+        "description": "Data updated in  database"
     },
-    "badFormat":{
-        "status":"Data in bad Format",
-        "code":1012,
-        "description":"Data is corrupted or in bad format"
+    "badFormat": {
+        "status": "Data in bad Format",
+        "code": 1012,
+        "description": "Data is corrupted or in bad format"
     }
 }

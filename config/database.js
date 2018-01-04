@@ -5,6 +5,6 @@ module.exports = {
         'user': 'root',
         'password': ''
     },
-	'database': 'xebia_portal',
+    'database': 'xebia_portal',
     'users_table': 'admins'
 };
