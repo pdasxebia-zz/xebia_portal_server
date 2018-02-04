@@ -114,42 +114,51 @@ module.exports = function (app, passport, Employee) {
 			msg = resp.dataIncomplete;
 			res.statusCode = 400;
 			data = req.body;
-
+			err=0;
 			if (Object.keys(data).length === 0 && data.constructor === Object) {
 				msg = resp.insuficientData;
-
+				err=1;
 			}
 			if (!("name" in data) || data.name.length < 3 || !(/^[a-z A-Z]*$/i.test(data.name))) {
 				msg.description = "Please enter a valid name.";
-
+				err=1;
 			}
 			if (!("emp_id" in data) || data.emp_id.length < 3 || !(/\w+/g.test(data.emp_id))) {
 				msg.description = "Please enter a valid ID for employee.";
+				err=1;
 			}
 			if (!("emp_type" in data) || data.emp_type.length < 3 || !(/^[a-z A-Z]*$/i.test(data.emp_type))) {
 				msg.description = "Please enter a valid Type of employee.";
+				err=1;
 
 			}
 			if (!("phone" in data) || data.phone.length < 3) {
 				msg.description = "Please enter a valid Phone number of employee.";
+				err=1;
 
 			}
 			if (!("email" in data) || data.email.length < 3 || !(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.email))) {
-				msg.description = "Please enter a valid Phone number of employee.";
+				msg.description = "Please enter a valid email number of employee.";
+				err=1;
 			}
 			if (!("status" in data)) {
 				data.status = "deployable";
 			}
-
-			Employee.create(data).then((sqlMsg) => {
-				console.log(sqlMsg);
-				msg = resp.dataInserted;
+			if(err==1){
 				res.send(msg);
-			}).catch(function (err) {
-				msg = resp.dataAlreadyExists;
-				msg.description = err.original.sqlMessage;
-				res.send(msg);
-			});
+			}else{
+				Employee.create(data).then((sqlMsg) => {
+					console.log(sqlMsg);
+					msg = resp.dataInserted;
+					res.statusCode = 200;
+					res.send(msg);
+				}).catch(function (err) {
+					msg = resp.dataAlreadyExists;
+					msg.description = err.original.sqlMessage;
+					res.send(msg);
+				});
+			}
+			
 
 			//Employee.create(data).then();
 
