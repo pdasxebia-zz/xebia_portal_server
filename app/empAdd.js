@@ -52,7 +52,7 @@ module.exports = function (app, passport, Employee, Address) {
 				msg = err;
 			}
 			if (!("pincode" in data) || data.country.length < 3 || !(/^[a-z A-Z]*$/i.test(data.country))) {
-				err.description = "Please enter a valid Type of employee.";
+				err.description = "Please enter a valid pincode.";
 				msg = err;
 			}
 			if (!("emp_id" in data)) {
@@ -117,8 +117,8 @@ module.exports = function (app, passport, Employee, Address) {
 				err.description = "Please enter a valid the country.";
 				msg = err;
 			}
-			if (!("pincode" in data) || data.country.length < 3 || !(/^[a-z A-Z]*$/i.test(data.country))) {
-				err.description = "Please enter a valid Type of employee.";
+			if (!("pincode" in data) || data.pincode.length < 3 || !(/^[0-9]*$/i.test(data.pincode))) {
+				err.description = "Please enter a valid pincode.";
 				msg = err;
 			}
 			if (!("emp_id" in data)) {

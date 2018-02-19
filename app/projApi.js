@@ -79,16 +79,16 @@ module.exports = function (app, passport, Project) {
 				err.description = "Please enter a valid name.";
 				msg = err;
 			}
-			if (!("manager" in data) || data.manager.length < 3 || !(/^[a-z A-Z]*$/i.test(data.manager))) {
-				err.description = "Please enter a valid name.";
+			if (!("manager" in data)  || !(/^[0-9]*$/i.test(data.manager))) {
+				err.description = "Please enter a valid manager.";
 				msg = err;
 			}
 			if (!("location_id" in data) || !(/^[0-9]*$/i.test(data.location_id))) {
-				err.description = "Please enter a valid name.";
+				err.description = "Please enter a valid Location.";
 				msg = err;
 			}
 			if (!("account_id" in data) || !(/^[0-9]*$/i.test(data.account_id))) {
-				err.description = "Please enter a valid name.";
+				err.description = "Please enter a valid Account.";
 				msg = err;
 			}
 			if (msg == null) {
