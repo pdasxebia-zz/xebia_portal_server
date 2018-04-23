@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('xebia_portal', 'root', '', {
+const sequelize = new Sequelize('xebia_portal', 'root', '12345', {
   host: 'localhost',
   dialect: 'mysql',
 
