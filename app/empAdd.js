@@ -17,7 +17,7 @@ module.exports = function (app, passport, Employee, Address) {
 	app.get('/address/:id/:type', function (req, res) {
 		if (req.isAuthenticated() || req.body.authToken == req.sessionID) {
 			Employee.findOne({ where: { emp_id: req.params.id }, raw: true }).then((emp) =>{
-				Address.findOne({ where: { emp_id: emp.id, type:req.params.type }, raw: true }).then((add)=>res.send(emp));
+				Address.findOne({ where: { emp_id: emp.id, address_type:req.params.type }, raw: true }).then((add)=>res.send(add));
 			}) ; // load the index.ejs file
 		} else {
 			res.statusCode = 401;
