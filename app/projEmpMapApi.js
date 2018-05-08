@@ -16,7 +16,13 @@ module.exports = function (app, passport, Employee, Project, EmpProjectMap) {
 
 	app.get('/empprojmap/:id', function (req, res) {
 		if (req.isAuthenticated() || req.body.authToken == req.sessionID) {
-			EmpProjectMap.findOne({ where: { id: req.params.id }, raw: true }).then((proj) => res.send(proj)); // load the index.ejs file
+			Employee.findOne({ where: { emp_id: req.params.id }, raw: true }).then((proj) => {
+				let id=proj.id;
+				console.log(proj);
+				EmpProjectMap.findOne({ where: { emp_id: id }, raw: true }).then((proj) => res.send(proj)); }); // load the index.ejs file
+			
+
+			//EmpProjectMap.findOne({ where: { id: req.params.id }, raw: true }).then((proj) => res.send(proj)); // load the index.ejs file
 		} else {
 			res.statusCode = 401;
 			res.send(resp.accessApiVioaltion);
